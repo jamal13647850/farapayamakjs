@@ -1,8 +1,19 @@
 {
-  "name": "Farapayamakjs",
-  "version": "1.0.0",
+  "name": "farapayamakjs",
+  "version": "1.1.0",
   "description": "Farapayamak by JavaScript",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "repository": {
+    "url": "https://github.com/jamal13647850/farapayamakjs",
+    "type": "git"
+  },
   "author": "Sayyed Jamal Ghasemi <jamal13647850@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "qs": "^6.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.25"
+  }
 }
