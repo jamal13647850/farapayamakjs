@@ -1,0 +1,8 @@
+{
+  "name": "Farapayamakjs",
+  "version": "1.0.0",
+  "description": "Farapayamak by JavaScript",
+  "main": "index.js",
+  "author": "Sayyed Jamal Ghasemi <jamal13647850@gmail.com>",
+  "license": "MIT"
+}
