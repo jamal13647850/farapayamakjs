@@ -6,6 +6,7 @@ var farapayamk = /** @class */ (function () {
         farapayamk.password = password;
         farapayamk.from = from;
     }
+    farapayamk.urlStart = "https://rest.payamak-panel.com/api/SendSMS/";
     farapayamk.setConfig = function (url, data) {
         return {
             method: 'post',
@@ -21,7 +22,7 @@ var farapayamk = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             axios(config)
                 .then(function (response) {
-                resolve(response);
+                resolve(response.data);
             })["catch"](function (error) {
                 reject(error);
             });
@@ -35,7 +36,7 @@ var farapayamk = /** @class */ (function () {
             from: farapayamk.from,
             text: text
         });
-        return farapayamk.setRequest(data, 'https://rest.payamak-panel.com/api/SendSMS/SendSMS');
+        return farapayamk.setRequest(data, farapayamk.urlStart + "SendSMS");
     };
     farapayamk.GetDelivery = function (recID) {
         var data = qs.stringify({
@@ -43,7 +44,21 @@ var farapayamk = /** @class */ (function () {
             password: farapayamk.password,
             recID: recID
         });
-        return farapayamk.setRequest(data, 'https://rest.payamak-panel.com/api/SendSMS/GetDeliveries2');
+        return farapayamk.setRequest(data, farapayamk.urlStart + "GetDeliveries2");
+    };
+    farapayamk.GetCredit = function () {
+        var data = qs.stringify({
+            username: farapayamk.username,
+            password: farapayamk.password
+        });
+        return farapayamk.setRequest(data, farapayamk.urlStart + "GetCredit");
+    };
+    farapayamk.GetUserNumbers = function () {
+        var data = qs.stringify({
+            username: farapayamk.username,
+            password: farapayamk.password
+        });
+        return farapayamk.setRequest(data, farapayamk.urlStart + "GetUserNumbers");
     };
     return farapayamk;
 }());

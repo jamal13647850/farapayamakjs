@@ -1,11 +1,14 @@
 {
   "name": "farapayamakjs",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Farapayamak by JavaScript",
   "main": "./dist/index.js",
   "repository": {
     "url": "https://github.com/jamal13647850/farapayamakjs",
     "type": "git"
+  },
+  "scripts": {
+    "build": "tsc --outDir ./dist/ ./src/index.ts"
   },
   "author": "Sayyed Jamal Ghasemi <jamal13647850@gmail.com>",
   "license": "MIT",
