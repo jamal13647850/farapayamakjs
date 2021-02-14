@@ -6,22 +6,18 @@ var farapayamk = /** @class */ (function () {
         farapayamk.password = password;
         farapayamk.from = from;
     }
-    farapayamk.SendSMS = function (to, text) {
-        var data = qs.stringify({
-            username: farapayamk.username,
-            password: farapayamk.password,
-            to: to,
-            from: farapayamk.from,
-            text: text
-        });
-        var config = {
+    farapayamk.setConfig = function (url, data) {
+        return {
             method: 'post',
-            url: 'https://rest.payamak-panel.com/api/SendSMS/SendSMS',
+            url: url,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: data
         };
+    };
+    farapayamk.setRequest = function (data, url) {
+        var config = farapayamk.setConfig(url, data);
         return new Promise(function (resolve, reject) {
             axios(config)
                 .then(function (response) {
@@ -30,6 +26,24 @@ var farapayamk = /** @class */ (function () {
                 reject(error);
             });
         });
+    };
+    farapayamk.SendSMS = function (to, text) {
+        var data = qs.stringify({
+            username: farapayamk.username,
+            password: farapayamk.password,
+            to: to,
+            from: farapayamk.from,
+            text: text
+        });
+        return farapayamk.setRequest(data, 'https://rest.payamak-panel.com/api/SendSMS/SendSMS');
+    };
+    farapayamk.GetDelivery = function (recID) {
+        var data = qs.stringify({
+            username: farapayamk.username,
+            password: farapayamk.password,
+            recID: recID
+        });
+        return farapayamk.setRequest(data, 'https://rest.payamak-panel.com/api/SendSMS/GetDeliveries2');
     };
     return farapayamk;
 }());
